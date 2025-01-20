@@ -29,7 +29,7 @@ router.post('/chat', async (req, res) => {
 
     } catch (error) {
         console.error('Chat error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: error.message });
     }
 });
 

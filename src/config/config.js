@@ -1,17 +1,13 @@
-import dotenv from 'dotenv';
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatOllama } from "@langchain/community/chat_models/ollama";
+// import { ChatOpenAI } from "@langchain/openai";
 
-dotenv.config();
+export const chatModel = new ChatOllama({
+    model: "qwen2.5:0.5b",
+    baseUrl: "http://localhost:11434",
+});
 
-// Validate environment variables
-if (!process.env.OPENAI_API_KEY) {
-    throw new Error('OPENAI_API_KEY is not set in environment variables');
-}
-
-// Configure the ChatOpenAI model
-export const chatModel = new ChatOpenAI({
-    openAIApiKey: process.env.OPENAI_API_KEY,
-    modelName: "gpt-4o-mini",
-    temperature: 0.7,
-    streaming: true,
-}); 
+// export const chatModel = new ChatOpenAI({
+//     modelName: "gpt2",
+//     temperature: 0.7,
+//     streaming: true,
+// }); 
